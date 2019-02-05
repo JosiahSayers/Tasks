@@ -49,6 +49,18 @@ function DisplayItem(item, comp){
         // item text
         var list = document.getElementById("uncompleted");
         var li = document.createElement("li");
+        li.addEventListener("click", function(){
+            console.log(this);
+            if (this.className == "expanded")
+            {
+                this.className = "";
+            }
+            else{
+            this.className = "expanded";
+            console.log(this.className);
+
+            }
+        });
         var span = document.createElement("span");
         var text = document.createTextNode(item);
         span.appendChild(text);
@@ -82,6 +94,19 @@ function DisplayItem(item, comp){
         // item text
         var list = document.getElementById("completed");
         var li = document.createElement("li");
+        li.addEventListener("click", function(){
+            console.log(this);
+            if (this.className == "expanded")
+            {
+                this.className = "";
+                console.log(this.className);
+            }
+            else{
+            this.className = "expanded";
+            console.log(this.className);
+
+            }
+        });
         var span = document.createElement("span");
         var text = document.createTextNode(item);
         span.appendChild(text);

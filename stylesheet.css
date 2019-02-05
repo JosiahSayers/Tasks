@@ -82,13 +82,14 @@ header{
     height: 0px;
 }
 
-#container ul li{
+div ul li{
     height: 55px;
     min-width: 288px;
     width: 90vw;
     max-width: 350px;
-    max-height: auto;
     word-wrap: break-word;
+    word-break: break-word;
+    overflow: hidden;
     border-radius: 12px;
     background-color: rgba(231, 76, 60,0.3);
     margin: 10px 0;
@@ -96,15 +97,24 @@ header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    overflow: hidden;
+    cursor: pointer;
     
     -moz-box-shadow:0 5px 5px rgba(182, 182, 182, 0.75);
     -webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
     box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
 }
 
+.expanded{
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 #container ul li span{
     font-weight: 700;
+    word-wrap: break-word;
+    max-width: 260px;
+    text-overflow: ellipsis;
 }
 
 #container ul li div{
@@ -183,9 +193,16 @@ header{
         padding: 5px;
     }
 
-    #container ul li{
+    div ul li{
         width: 350px;
         margin: 5px;
+        word-wrap: break-word;
+    }
+
+    div ul li span{
+        word-wrap: break-word;
+        word-break: break-word;
+        text-overflow: ellipsis;
     }
 
     body{
@@ -228,9 +245,16 @@ header{
         padding: 5px;
     }
 
-    #container ul li{
+    div ul li{
         width: 350px;
         margin: 5px;
+        word-wrap: break-word;
+    }
+
+    div ul li span{
+        word-wrap: break-word;
+        word-break: break-word;
+        text-overflow: ellipsis;
     }
 
     body{
