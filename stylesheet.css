@@ -4,6 +4,7 @@ body{
 }
 
 header{
+    min-width: 320px;
     width: 100vw;
     height: 90px;
     background-color: #e74c3c;
@@ -83,7 +84,9 @@ header{
 
 #container ul li{
     height: 55px;
+    min-width: 288px;
     width: 90vw;
+    max-width: 350px;
     max-height: auto;
     word-wrap: break-word;
     border-radius: 12px;
@@ -137,6 +140,92 @@ header{
     color: rgba(46, 204, 113, 0.3);
 }
 
-@media only screen and (min-width: 1000px){
+@media only screen and (min-width: 790px){
+    
+    #container{
+        display:grid;
+        grid-template-columns: auto 750px auto;
+        grid-template-rows: min-content 0px min-content;
+        grid-template-areas: "spacerL uncompleted spacerR"
+                             "spacerL seperator spacerR"
+                             "spaceL completed spaceR";
+    }
 
+    #uncompleted{
+        grid-area: uncompleted;
+    }
+
+    #seperator{
+        grid-area: seperator;
+        justify-self: center;
+    }
+
+    #completed{
+        grid-area: completed;
+    }
+
+    #container ul{
+        width: 750px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+
+    #container ul li{
+        width: 350px;
+        margin: 5px;
+    }
+
+    body{
+        min-width:320px;
+    }
+}
+
+@media only screen and (min-width: 1250px){
+    
+    #container{
+        display:grid;
+        grid-template-columns: auto 1210px auto;
+        grid-template-rows: min-content 0px min-content;
+        grid-template-areas: "spacerL uncompleted spacerR"
+                             "spacerL seperator spacerR"
+                             "spaceL completed spaceR";
+    }
+
+    #uncompleted{
+        grid-area: uncompleted;
+    }
+
+    #seperator{
+        grid-area: seperator;
+        justify-self: center;
+    }
+
+    #completed{
+        grid-area: completed;
+    }
+
+    #container ul{
+        width: 1210px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+
+    #container ul li{
+        width: 350px;
+        margin: 5px;
+    }
+
+    body{
+        min-width:320px;
+    }
 }
