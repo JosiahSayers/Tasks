@@ -129,7 +129,7 @@ header{
 
 #completed li span{
     text-decoration: line-through;
-    color: rgba(25, 25, 25,0.7);
+    color: rgba(100, 100, 100,0.7);
 }
 
 #container #completed li div svg.check{
