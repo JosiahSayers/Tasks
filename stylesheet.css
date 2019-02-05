@@ -117,6 +117,14 @@ header{
     min-width: 50px;
 }
 
+#uncompleted{
+    margin-bottom: 15px;
+}
+
+#completed{
+    margin-top: 15px;
+}
+
 #container ul li div svg.delete:hover{
     color: rgba(255, 0, 0, 1);
 }
