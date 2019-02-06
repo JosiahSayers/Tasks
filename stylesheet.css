@@ -95,6 +95,7 @@ div ul li{
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    transition-duration: 0.2s;
     
     -moz-box-shadow:0 5px 5px rgba(182, 182, 182, 0.75);
     -webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
@@ -107,6 +108,7 @@ div ul li{
     height: auto;
     padding-top: 5px;
     padding-bottom: 5px;
+    z-index: 998;
 }
 
 div ul li span{
