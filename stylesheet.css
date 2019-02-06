@@ -83,8 +83,7 @@ header{
 }
 
 div ul li{
-    min-height: 55px;
-    height: 55px;
+    height: 36pt;
     min-width: 288px;
     width: 90vw;
     max-width: 350px;
@@ -116,6 +115,7 @@ div ul li{
     word-wrap: break-word;
     max-width: 260px;
     text-overflow: ellipsis;
+    font-size: 12pt;
 }
 
 #container ul li div{
@@ -256,6 +256,7 @@ div ul li{
         word-wrap: break-word;
         word-break: break-word;
         text-overflow: ellipsis;
+
     }
 
     body{
