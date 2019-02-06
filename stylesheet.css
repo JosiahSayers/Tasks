@@ -83,13 +83,10 @@ header{
 }
 
 div ul li{
-    height: 36pt;
+    min-height: 36pt;
     min-width: 288px;
     width: 90vw;
     max-width: 350px;
-    word-wrap: break-word;
-    word-break: break-word;
-    overflow: hidden;
     border-radius: 12px;
     background-color: rgba(231, 76, 60,0.3);
     margin: 10px 0;
@@ -105,17 +102,22 @@ div ul li{
 }
 
 .expanded{
+    white-space: normal;
+    min-height: 36pt;
     height: auto;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-#container ul li span{
-    font-weight: 700;
+div ul li span{
     word-wrap: break-word;
-    max-width: 260px;
+    white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
     font-size: 12pt;
+    max-width: 260px;
+    font-weight: 700;
+    min-height: 16pt;
 }
 
 #container ul li div{
@@ -197,13 +199,6 @@ div ul li{
     div ul li{
         width: 350px;
         margin: 5px;
-        word-wrap: break-word;
-    }
-
-    div ul li span{
-        word-wrap: break-word;
-        word-break: break-word;
-        text-overflow: ellipsis;
     }
 
     body{
@@ -250,13 +245,6 @@ div ul li{
         width: 350px;
         margin: 5px;
         word-wrap: break-word;
-    }
-
-    div ul li span{
-        word-wrap: break-word;
-        word-break: break-word;
-        text-overflow: ellipsis;
-
     }
 
     body{
