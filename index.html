@@ -1,7 +1,7 @@
 <html>
     <head>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="245083786179-oainluq9sppsjdc9u2acm6t1pgi89sb2.apps.googleusercontent.com">
+        <meta name="google-signin-client_id" content="245083786179-vrv7rk4j6haaknbuut85u0prmenijisi.apps.googleusercontent.com">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
         <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>    
         <link rel="stylesheet" href="css/reset.css" type="text/css">
@@ -35,25 +35,12 @@
 
     <p id="id">ID: </p>
     <p id="name">Name: </p>
-    <p id="img">Image URL: </p>
+    <img id="img" src="">
     <p id="email">Email: </p>
 
 
-    <script>
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    <a href="#" onclick="signOut();">Sign out</a>
 
-        document.getElementById("id").innerHTML = "ID: " + profile.getID();
-        document.getElementById("name").innerHTML = "ID: " + profile.getName();
-        document.getElementById("img").innerHTML = "Image URL: " + profile.getImageUrl();
-        document.getElementById("email").innerHTML = "Email: " + profile.getEmail();
-
-
-      }
-    </script>
+<script src="js/login.js"></script>
     </body>
 </html>
