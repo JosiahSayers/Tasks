@@ -83,6 +83,7 @@ header{
 }
 
 div ul li{
+    min-height: 55px;
     height: 55px;
     min-width: 288px;
     width: 90vw;
