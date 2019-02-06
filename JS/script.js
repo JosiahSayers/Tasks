@@ -56,16 +56,20 @@ function DisplayItem(item, comp){
      var list = document.getElementById(listID);
      var li = document.createElement("li");
      var span = document.createElement("span");
-     span.addEventListener("click", function(){
+     li.addEventListener("click", function(){
          console.log(this);
          if (this.className == "expanded")
          {
              this.className = "";
+             this.addEventListener("transitionend", function(){
+                this.children[0].className = "";
+             });
          }
          else{
          this.className = "expanded";
-         console.log(this.className);
-
+         this.addEventListener("transitionend", function(){
+            this.children[0].className = "expanded";
+         });
          }
      });
      var text = document.createTextNode(item);
