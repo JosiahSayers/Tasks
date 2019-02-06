@@ -1,9 +1,11 @@
 <html>
     <head>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="245083786179-oainluq9sppsjdc9u2acm6t1pgi89sb2.apps.googleusercontent.com">
+        <title>ToDoList</title>
+    
+        <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0">
+    
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-        <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>    
+        <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/reset.css" type="text/css">
         <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
 
@@ -25,35 +27,26 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
-
-        <title>Log in to save you list!</title>
     </head>
     <body>
-    <a href="app.html">Go to App</a>
+        <header>
+            <input type="text" id="newItem" placeholder="Enter a task..">
+            <button id="addItem"><i class="fas fa-plus" id="addIcon"></i></button>
+        </header>
+        <div id="container">
+            <div class="spacerL"></div>
+            <ul id="uncompleted">
 
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </ul>
 
-    <p id="id">ID: </p>
-    <p id="name">Name: </p>
-    <p id="img">Image URL: </p>
-    <p id="email">Email: </p>
+            <div id="seperator"></div>
 
+            <ul id="completed">   
 
-    <script>
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            </ul>
+            <div class="spacerR"></div>
+        </div>
 
-        document.getElementById("id").innerHTML = "ID: " + profile.getID();
-        document.getElementById("name").innerHTML = "ID: " + profile.getName();
-        document.getElementById("img").innerHTML = "Image URL: " + profile.getImageUrl();
-        document.getElementById("email").innerHTML = "Email: " + profile.getEmail();
-
-
-      }
-    </script>
+        <script src="js/script.js"></script>
     </body>
 </html>
