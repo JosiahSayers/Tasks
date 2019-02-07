@@ -72,7 +72,7 @@ header{
     flex-direction: column;
     width: 100%;
     min-height: calc(100vh - 110px);
-    background-color: rgba(231, 76, 60,0.1);
+    background-color: #ecf0f1;
     align-items: center;
 }
 
