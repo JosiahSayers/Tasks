@@ -1,46 +1,45 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="245083786179-vrv7rk4j6haaknbuut85u0prmenijisi.apps.googleusercontent.com">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-        <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>    
-        <link rel="stylesheet" href="css/reset.css" type="text/css">
-        <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+  <head>
+    <title>Drive API Quickstart</title>
+    <meta charset="utf-8" />
+    <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>    
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
 
-        <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-        <link rel="shortcut icon" href="icons/favicon-96x96.png" type="image/x-icon" />
-        <link rel="manifest" href="icons/manifest.json">
-        <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
-        <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="shortcut icon" href="icons/favicon-96x96.png" type="image/x-icon" />
+    <link rel="manifest" href="icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+  <body>
+    <p>Drive API Quickstart</p>
 
-        <title>Log in to save you list!</title>
-    </head>
-    <body>
-    <a href="app.html">Go to App</a>
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" style="display: none;">Authorize</button>
+    <button id="signout_button" style="display: none;">Sign Out</button>
 
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <pre id="content" style="white-space: pre-wrap;"></pre>
 
-    <p id="id">ID: </p>
-    <p id="name">Name: </p>
-    <img id="img" src="">
-    <p id="email">Email: </p>
+    <script src="js/login.js"></script>
 
-
-    <a href="#" onclick="signOut();" id="signout">Sign out</a>
-
-<script src="js/login.js"></script>
-    </body>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
 </html>
