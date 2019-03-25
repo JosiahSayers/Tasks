@@ -8,11 +8,13 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 
 document.getElementById("addItem").addEventListener("click", function(){
     var value = document.getElementById("newItem").value;
-    let nextUncompletedNumber = data.uncompletedItems[data.uncompletedItems.length - 1] != null ? data.uncompletedItems[data.uncompletedItems.length - 1].number : 1;
+    let nextUncompletedNumber = data.uncompletedItems[data.uncompletedItems.length - 1] != null ? data.uncompletedItems[data.uncompletedItems.length - 1].number + 1 : 1;
     if (value)
     {
         data.uncompletedItems.push({number: nextUncompletedNumber, text: value});
-        data.uncompletedItems.sort((a, b) => a.number - b.number);
+        console.log(data);
+        sortArrays();
+
         localStorage.setItem('todoList', JSON.stringify(data));
         DisplayItem(value, false);
         document.getElementById("newItem").value = '';
@@ -20,11 +22,11 @@ document.getElementById("addItem").addEventListener("click", function(){
 });
 document.getElementById("newItem").addEventListener("keydown", function(e){
     var value = this.value;
-    let nextUncompletedNumber = data.uncompletedItems[data.uncompletedItems.length - 1] != null ? data.uncompletedItems[data.uncompletedItems.length - 1].number : 1;
+    let nextUncompletedNumber = data.uncompletedItems[data.uncompletedItems.length - 1] != null ? data.uncompletedItems[data.uncompletedItems.length - 1].number + 1 : 1;
     if(e.code === "Enter" && value)
     {
         data.uncompletedItems.push({number: nextUncompletedNumber, text: value});
-        data.uncompletedItems.sort((a, b) => a.number - b.number);
+        sortArrays();
         localStorage.setItem('todoList', JSON.stringify(data));
         DisplayItem(value, false);
         document.getElementById("newItem").value = '';
@@ -36,6 +38,8 @@ document.getElementById("newItem").addEventListener("keydown", function(e){
 
 function InitialRenderTodoList() {
     if (!data.uncompletedItems.length && !data.completedItems.length) return;
+
+    console.log(data);
   
     for (var i = 0; i < data.uncompletedItems.length; i++) {
       var value = data.uncompletedItems[i].text;
@@ -116,7 +120,7 @@ function checkClicked(){
     {
         data.uncompletedItems.splice(data.uncompletedItems.indexOf(value), 1);
         data.completedItems.push(value);
-        data.completedItems.sort((a, b) => a.number - b.number);
+        sortArrays();
         localStorage.setItem('todoList', JSON.stringify(data));
         DisplayItem(item.children[0].innerHTML, true);
         parent.removeChild(item);
@@ -125,7 +129,7 @@ function checkClicked(){
     {
         data.completedItems.splice(data.completedItems.indexOf(value), 1);
         data.uncompletedItems.push(value);
-        data.uncompletedItems.sort((a, b) => a.number - b.number);
+        sortArrays();
         localStorage.setItem('todoList', JSON.stringify(data));
         DisplayItem(item.children[0].innerHTML, false);
         parent.removeChild(item);
@@ -161,4 +165,10 @@ function CheckIfSeperatorIsNeeded() {
   } else {
     document.getElementById('seperator').className = 'seperator';
   }
+}
+
+function sortArrays() {
+  data.uncompletedItems.sort((a, b) => a.number - b.number);
+  data.completedItems.sort((a, b) => a.number - b.number);
+  console.log(data);
 }
