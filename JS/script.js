@@ -42,6 +42,8 @@ function InitialRenderTodoList() {
       var value = data.completedItems[j];
       DisplayItem(value, true);
     }
+
+    CheckIfSeperatorIsNeeded();
   }
 
 function DisplayItem(item, comp){
@@ -57,7 +59,6 @@ function DisplayItem(item, comp){
      var li = document.createElement("li");
      var span = document.createElement("span");
      li.addEventListener("click", function(){
-         console.log(this);
          if (this.className == "expanded")
          {
              this.className = "";
@@ -98,6 +99,8 @@ function DisplayItem(item, comp){
 
      // Append new li to list
      list.appendChild(li);
+
+     CheckIfSeperatorIsNeeded();
 }
 
 function checkClicked(){
@@ -121,6 +124,8 @@ function checkClicked(){
         DisplayItem(item.children[0].innerHTML, false);
         parent.removeChild(item);
     }
+
+    CheckIfSeperatorIsNeeded();
 }
 
 function deleteClicked(){
@@ -139,4 +144,15 @@ function deleteClicked(){
         data.completedItems.splice(data.completedItems.indexOf(value), 1);
         localStorage.setItem('todoList', JSON.stringify(data));
     }
+
+    CheckIfSeperatorIsNeeded();
+}
+
+function CheckIfSeperatorIsNeeded() {
+  if (data.completedItems.length == 0 || data.uncompletedItems.length == 0)
+  {
+    document.getElementById('seperator').className = 'hidden';
+  } else {
+    document.getElementById('seperator').className = 'seperator';
+  }
 }
