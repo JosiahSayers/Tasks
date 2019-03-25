@@ -4,13 +4,20 @@ var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
     completedItems: []
   };
 
-  InitialRenderTodoList();
+  let nextUncompletedNumber;
+  let nextCompletedNumber;
+
+  RenderTodoList();
 
 document.getElementById("addItem").addEventListener("click", function(){
     var value = document.getElementById("newItem").value;
+    updateNumberCounters();
     if (value)
     {
-        data.uncompletedItems.push(value);
+        data.uncompletedItems.push({number: nextUncompletedNumber, text: value});
+        console.log(data);
+        sortArrays();
+
         localStorage.setItem('todoList', JSON.stringify(data));
         DisplayItem(value, false);
         document.getElementById("newItem").value = '';
@@ -18,9 +25,11 @@ document.getElementById("addItem").addEventListener("click", function(){
 });
 document.getElementById("newItem").addEventListener("keydown", function(e){
     var value = this.value;
+    updateNumberCounters();
     if(e.code === "Enter" && value)
     {
-        data.uncompletedItems.push(value);
+        data.uncompletedItems.push({number: nextUncompletedNumber, text: value});
+        sortArrays();
         localStorage.setItem('todoList', JSON.stringify(data));
         DisplayItem(value, false);
         document.getElementById("newItem").value = '';
@@ -30,29 +39,29 @@ document.getElementById("newItem").addEventListener("keydown", function(e){
 
 // Functions
 
-function InitialRenderTodoList() {
+function RenderTodoList() {
     if (!data.uncompletedItems.length && !data.completedItems.length) return;
+
+    let uncompletedNode = document.getElementById('uncompleted');
+    let completedNode = document.getElementById('completed');
+
+    uncompletedNode.innerHTML = '';
+    completedNode.innerHTML = '';
   
-    for (var i = 0; i < data.uncompletedItems.length; i++) {
-      var value = data.uncompletedItems[i];
-      DisplayItem(value, false);
-    }
+    data.uncompletedItems.forEach(value => {
+      DisplayItem(value.text, false);
+    });
   
-    for (var j = 0; j < data.completedItems.length; j++) {
-      var value = data.completedItems[j];
-      DisplayItem(value, true);
-    }
+    data.completedItems.forEach(value => {
+      DisplayItem(value.text, true);
+    });
 
     CheckIfSeperatorIsNeeded();
   }
 
 function DisplayItem(item, comp){
-    if(!comp){
-        var listID = "uncompleted";
-    }
-    else{
-        var listID = "completed";
-    }
+  var listID = !comp ? 'uncompleted' : 'completed';  
+
     // Creat LI
      // item text
      var list = document.getElementById(listID);
@@ -110,21 +119,27 @@ function checkClicked(){
 
     if(parent.id === "uncompleted")
     {
-        data.uncompletedItems.splice(data.uncompletedItems.indexOf(value), 1);
-        data.completedItems.push(value);
+        data.completedItems.push({number: data.uncompletedItems[findItem(value, false)].number, text:value});
+        data.uncompletedItems.splice(findItem(value, false), 1);
+
+        sortArrays();
         localStorage.setItem('todoList', JSON.stringify(data));
         DisplayItem(item.children[0].innerHTML, true);
         parent.removeChild(item);
     }
     else
     {
-        data.completedItems.splice(data.completedItems.indexOf(value), 1);
-        data.uncompletedItems.push(value);
+        data.uncompletedItems.push({number: data.completedItems[findItem(value, true)].number, text:value});
+        data.completedItems.splice(findItem(value, true), 1);
+
+        sortArrays();
         localStorage.setItem('todoList', JSON.stringify(data));
         DisplayItem(item.children[0].innerHTML, false);
         parent.removeChild(item);
     }
 
+    RenderTodoList();
+    updateNumberCounters();
     CheckIfSeperatorIsNeeded();
 }
 
@@ -145,6 +160,7 @@ function deleteClicked(){
         localStorage.setItem('todoList', JSON.stringify(data));
     }
 
+    updateNumberCounters();
     CheckIfSeperatorIsNeeded();
 }
 
@@ -155,4 +171,35 @@ function CheckIfSeperatorIsNeeded() {
   } else {
     document.getElementById('seperator').className = 'seperator';
   }
+}
+
+function sortArrays() {
+  data.uncompletedItems.sort((a, b) => a.number - b.number);
+  data.completedItems.sort((a, b) => a.number - b.number);
+  console.log(data);
+}
+
+function findItem(searchText, completed) {
+  let resultIndex;
+
+  if(completed) {
+    data.completedItems.forEach((item, index) => {
+      if (item.text === searchText) {
+        resultIndex = index;
+      }
+    });
+  } else {
+    data.uncompletedItems.forEach((item, index) => {
+      if (item.text === searchText) {
+        resultIndex = index;
+      }
+    });
+  }
+
+  return resultIndex;
+}
+
+function updateNumberCounters() {
+  nextUncompletedNumber = data.uncompletedItems[data.uncompletedItems.length - 1] != null ? data.uncompletedItems[data.uncompletedItems.length - 1].number + 1 : 1;
+  nextCompletedNumber = data.completedItems[data.completedItems.length - 1] != null ? data.completedItems[data.completedItems.length - 1].number + 1 : 1;
 }
